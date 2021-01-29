@@ -1,0 +1,17 @@
+/*
+ * 加法函数
+ */
+fun plus(num a, num b)
+{
+    num c = a + b;
+    return c;
+}
+
+main(num argc, list argv)
+{
+    // 定义参数
+    num a = 1;
+    num b = 2;
+    num c = plus(a, b); // 计算结果
+    out(c)
+}
