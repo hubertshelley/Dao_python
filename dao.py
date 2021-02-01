@@ -2,6 +2,9 @@ import getopt
 import re
 import sys
 
+from annotator import annotator
+from lexical_analyzer import lexical_analyzer
+
 
 def main(argv):
     input_file = ''
@@ -22,13 +25,8 @@ def main(argv):
     print('输入的文件为：', input_file)
     with open(input_file) as f:
         file_data = f.readlines()
-        length = len(file_data)
-        for index in range(length):
-            s = re.compile(r'//.*')
-            file_data[index] = re.sub(s, '', file_data[index])
-        file_data = ''.join(file_data)
-        s = re.compile(r'/\*.*?\*/', re.S)
-        file_data = re.sub(s, '', file_data)
+        code = annotator.annotator(file_data)
+        lexical_analyzer.analyzer(code)
         print(file_data)
     print('输出的文件为：', output_file)
 
